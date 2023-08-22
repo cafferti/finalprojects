@@ -33,18 +33,15 @@ countpositive2 = (array) => {
 countpositive2([1, -3, 5]);
 countpositive2([-2, 3, -5, 7, 10]);
 
-
-
-
 // let seconds = 0;
 // let minute = 0; // This value needs to be 0 initially
 // let hour = 0;
 
-let seconds = JSON.parse(localStorage.getItem('seconds'));
-let minute = JSON.parse(localStorage.getItem('minute'));
-let hour = JSON.parse(localStorage.getItem('hour'));
+let seconds = JSON.parse(localStorage.getItem("seconds"));
+let minute = JSON.parse(localStorage.getItem("minute"));
+let hour = JSON.parse(localStorage.getItem("hour"));
 let intervalid;
-document.querySelector( ".js-head" ).innerHTML = `${hour}:${minute}:${seconds}`;
+
 //the above so that the values are retrieved from the localstorage and then displayed when its refreshed
 
 function startcount(motion) {
@@ -73,19 +70,18 @@ function startcount(motion) {
     seconds = 0;
     minute = 0;
     hour = 0;
-    clearInterval(intervalid);
+    //clearInterval(intervalid); if you want it to stoprunning after commmit
+
     document.querySelector(
-        ".js-head"
-      ).innerHTML = `${hour}:${minute}:${seconds}`;
+      ".js-head"
+    ).innerHTML = `${hour}:${minute}:${seconds}`;
   }
 
-  localStorage.setItem(`seconds`, JSON.stringify(seconds))
-  localStorage.setItem(`minute`, JSON.stringify(minute))
-  localStorage.setItem(`hour`, JSON.stringify(hour))
-
-
-
+  localStorage.setItem(`seconds`, JSON.stringify(seconds));
+  localStorage.setItem(`minute`, JSON.stringify(minute));
+  localStorage.setItem(`hour`, JSON.stringify(hour));
 }
+document.querySelector(".js-head").innerHTML = `${hour}:${minute}:${seconds}`;
 
 document.querySelector(`.startbtn`).addEventListener(`click`, () => {
   startcount(`start`);
